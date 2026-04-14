@@ -9,3 +9,4 @@ split-settings==1.0.0
 sqlparse==0.5.5
 typing_extensions==4.15.0
 uWSGI==2.0.31
+django-cors-headers==4.9.0

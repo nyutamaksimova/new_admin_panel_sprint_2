@@ -1,9 +1,8 @@
 from django.contrib.postgres.aggregates import ArrayAgg
-from django.contrib.postgres.fields import ArrayField
-from django.db.models import Q, Value, CharField
+from django.db.models import Q, Value
 from django.db.models.functions import Coalesce
 from django.http import JsonResponse
-from django.views.generic import DetailView
+from django.views.generic.detail import BaseDetailView
 from django.views.generic.list import BaseListView
 
 from movies.models import FilmWork
@@ -53,7 +52,7 @@ class MoviesListApi(MoviesApiMixin, BaseListView):
         return context
 
 
-class MoviesDetailApi(MoviesApiMixin, DetailView):
+class MoviesDetailApi(MoviesApiMixin, BaseDetailView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
-        return self.get_queryset().filter(id=self.kwargs['pk']).first()
+        return self.object
